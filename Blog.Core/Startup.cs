@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace Blog.Core
@@ -44,6 +45,15 @@ namespace Blog.Core
                         Url = "https://www.jianshu.com/u/94102b59cc2a"
                     }
                 });
+
+                // 读取xml文件
+                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                var xmlPath = System.IO.Path.Combine(basePath, "Blog.Core.xml");
+                c.IncludeXmlComments(xmlPath, true);        // 默认的第二个参数是false，这个是controller的注释，记得修改
+
+                var xmlModelPath = System.IO.Path.Combine(basePath, "Blog.Core.Model.xml");//这个就是Model层的xml文件名
+                c.IncludeXmlComments(xmlModelPath);
+
             });
             #endregion
         }
@@ -67,6 +77,10 @@ namespace Blog.Core
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ApiHelp V1");
                 // /v1/必须与上文路径一致。
+                //c.SwaggerEndpoint($"/swagger/v1/swagger.json", $"{ApiName} v1");//注意这个 v1 要和上边 ConfigureServices 中配置的大小写一致
+                
+                // 将swagger设置成首页
+                //c.RoutePrefix = ""; //路径配置，设置为空，表示直接在根域名（localhost:8001）访问该文件,注意localhost:8001/swagger是访问不到的，去launchSettings.json把launchUrl去掉
             });
             #endregion
 

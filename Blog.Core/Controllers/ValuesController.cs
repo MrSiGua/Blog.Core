@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Blog.Core.Model;
 
 namespace Blog.Core.Controllers
 {
@@ -24,9 +25,12 @@ namespace Blog.Core.Controllers
             return "value";
         }
 
-        // POST api/values
+        /// <summary>
+        /// post
+        /// </summary>
+        /// <param name="love">model实体类参数</param>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post(Love love)
         {
         }
 
