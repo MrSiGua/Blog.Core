@@ -2,6 +2,9 @@
 
 namespace Blog.Core.Model
 {
+    /// <summary>
+    /// Love
+    /// </summary>
     public class Love
     {
         /// <summary>
