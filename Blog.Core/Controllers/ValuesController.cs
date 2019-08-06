@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Blog.Core.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Blog.Core.Controllers
 {
@@ -13,6 +14,7 @@ namespace Blog.Core.Controllers
     {
         // GET api/values
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };

@@ -4,6 +4,11 @@
         <name>Blog.Core.Model</name>
     </assembly>
     <members>
+        <member name="T:Blog.Core.Model.Love">
+            <summary>
+            Love
+            </summary>
+        </member>
         <member name="P:Blog.Core.Model.Love.Id">
             <summary>
             id
