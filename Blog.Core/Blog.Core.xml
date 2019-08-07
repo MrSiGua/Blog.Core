@@ -61,6 +61,13 @@
             职能
             </summary>
         </member>
+        <member name="M:Blog.Core.Controllers.BlogController.Get(System.Int32)">
+            <summary>
+            hhh
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Blog.Core.Controllers.ValuesController.Post(Blog.Core.Model.Love)">
             <summary>
             post

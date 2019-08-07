@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Blog.Core.IServices;
+using Blog.Core.Model;
 using Blog.Core.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,12 +21,18 @@ namespace Blog.Core.Controllers
             IAdvertisementServices advertisementServices = new AdvertisementServices();
             return advertisementServices.Sum(i, j);
         }
-
+        
         // GET: api/Blog/5
+        /// <summary>
+        /// hhh
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public List<Advertisement> Get(int id)
         {
-            return "value";
+            IAdvertisementServices advertisement = new AdvertisementServices();
+            return advertisement.Query(d => d.Id == id);
         }
 
         // POST: api/Blog
